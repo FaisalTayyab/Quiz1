@@ -1,0 +1,118 @@
+#include<iostream>
+using namespace std;
+//creating a class node
+class node
+{
+public:
+	int data;
+	node* next;
+};
+//creating a stack
+class stack
+{
+private:
+	node* top;
+
+	
+public:
+	
+	stack()
+	{
+		top == NULL;
+
+	}
+	//checking if the stack is empty
+	bool is_stack_empty()
+	{
+		if (top == NULL)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	//push function that will add element on the top of the stack
+	void push(int val)
+	{
+		node* temp = new node;
+		temp->data = val;
+		temp->next = NULL;
+		if (top == NULL)
+		{
+			top = temp;
+
+		}
+		else
+		{
+			temp->next = top;
+			top = temp;
+		}
+
+	}
+	//using pop function that will remove and return the element at the top of the stack
+	void pop()
+	{
+		node* temp = top;
+		if (top == NULL)
+		{
+			cout << "stack " << endl;
+		}
+		else
+		{
+			top = temp->next;
+			cout << "The new stack is:" << temp->data;
+			delete temp;
+		}
+
+
+	}
+	//return the element at top without removing it
+	int peek()
+	{
+		node* p = top;
+		cout << "the top os stack is:" << p->data << endl;
+		return top->data;
+	}
+	//returns the nu,ber of elements in the stack
+	int size()
+	{
+		int count = 0;
+		node* temp = top;
+		while (temp != NULL)
+		{
+			count++;
+			temp = temp->next;
+
+		}
+		cout << "The size of our stack is :" << count << endl;
+	}
+	//display the function implemented in the program
+	void display()
+	{
+		node* current = top;
+		cout << "The values is stack are:" << endl;
+		
+		while (current != NULL)
+		{
+			cout << current->data << "   " << endl;
+			current = current->next;
+		}
+	}
+
+	
+};
+int main()
+{
+	stack s;
+	s.push(29);
+	s.push(39);
+	s.push(49);
+	s.push(59);
+	s.push(69);
+	s.display();
+	s.pop();
+	s.peek();
+	s.display();
+}
